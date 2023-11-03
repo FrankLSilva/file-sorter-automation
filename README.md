@@ -19,7 +19,7 @@ Sorted categories and extensions:
 
 ! ! !  WARNINGS ! ! !
 --------------------------------------
--> Be cautious when selecting the folder to run this script.
--> Running it on the wrong directory could impact your system's functionality.
--> This script also operates on hidden folders, so exercise extra care during usage.
--> Files with the same name in the destination folder will be automatically overwritten.
+- Be cautious when selecting the folder to run this script.
+- Running it on the wrong directory could impact your system's functionality.
+- This script also operates on hidden folders, so exercise extra care during usage.
+- Files with the same name in the destination folder will be automatically overwritten.
