@@ -1,20 +1,16 @@
-from os import listdir
-from os.path import isfile, join
 import os
 import shutil
-import dearpygui.dearpygui as dpg
-
 
 folder_names = {
     "Audio": {'aif', 'cda', 'flac', 'm4a', 'mid', 'midi', 'mp3', 'mpa', 'ogg', 'wav', 'wma', 'aiff', 'au', 'aac'},
-    "Compressed": {'7z', 'deb', 'pkg', 'rar', 'rpm', 'z', 'gz', 'bz2', 'xz', 'lz', 'iso'},
+    "Compressed": {'7z', 'deb', 'pkg', 'rar', 'rpm', 'z', 'gz', 'bz2', 'xz', 'lz', 'iso', 'zip', 'tar'},
     "Code": {'js', 'jsp', 'html', 'ipynb', 'py', 'java', 'css', 'cpp', 'c', 'h', 'php', 'rb', 'json', 'xml', 'yml', 'md'},
     "Documents": {'ppt', 'pptx', 'pdf', 'doc', 'docx', 'txt', 'tex', 'rtf', 'odt', 'csv'},
     "Images": {'bmp', 'gif', 'ico', 'jpeg', 'jpg', 'png', 'jfif', 'svg', 'tif', 'tiff', 'webp', 'eps', 'raw', 'cr2'},
     "Programs": {'apk', 'exe', 'jar', 'msi', 'dmg', 'app', 'com', 'appimage', 'dll'},
     "Videos": {'3gp', 'avi', 'flv', 'h264', 'mkv', 'mov', 'mp4', 'mpg', 'mpeg', 'wmv', 'm4v', 'webm', 'vob', 'ts'},
     "Spreadsheets": {'xls', 'xlsx'},
-    "Archives": {'zip', 'tar'},
+    "Fonts": {'otf', 'ttf', 'fnt', 'pfa', 'vfb', 'jfproj', 'vlw', 'woff', 'sfd', 'fon'},
     "Scripts": {'sh', 'bat', 'bash', 'ps1', 'vbs', 'php', 'rb', 'pl', 'pyc'},
     "Web": {'html', 'css', 'js', 'php', 'asp', 'jsp', 'xml', 'json', 'htm', 'xhtml', 'scss', 'less'},
     "Ebooks": {'epub', 'mobi', 'pdf'},
@@ -27,9 +23,9 @@ while True:
     print("Welcome to the File Sorter Automation tool!")
     print("Please select the folder you want to organize.")
     print("You don't need to use quotation marks in your response.")
-
     print("\nSorted categories and extensions:")
     print("--------------------------------------")
+
     for category, extensions in folder_names.items():
         print(f"{category}: {', '.join(extensions)}")
 
@@ -58,7 +54,7 @@ while True:
     folder_path = os.path.join(directory, folder)
 
     # ---------------------- GET ALL FILES
-    files = [f for f in listdir(folder_path) if isfile(join(folder_path, f))]
+    files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
 
     # Create a dictionary to store organized files
     organized_files = {folder_name: [] for folder_name in folder_names}
@@ -93,8 +89,3 @@ while True:
     if restart != 'y':
         print("\n--------------------------------------")
         break
-
-dpg.setup_dearpygui()
-dpg.show_viewport()
-dpg.start_dearpygui()
-dpg.destroy_context()
